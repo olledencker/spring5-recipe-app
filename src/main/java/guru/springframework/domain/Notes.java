@@ -37,4 +37,10 @@ public class Notes{
 
     @Lob
     private String RecipeNote;
+
+    public Notes() {
+    }
+    public Notes(String note){
+        this.setRecipeNote(note);
+    }
 }

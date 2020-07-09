@@ -1,10 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+
 <head>
     <meta charset="UTF-8">
     <title>Test start</title>
 </head>
 <body>
 <h1>Recepies</h1>
+<table class="table table-striped">
+    <thead>
+    <TR><th>ID</th><th>Description</th><th>Origin</th><th>Ingredients</th></TR>
+    <!--/*@thymesVar id="recipe" type="guru.springframework.domain.Recipe"*/-->
+    </thead>
+    <!--/*@thymesVar id="recipies" type="java.util.Set"*/-->
+    <!--/*@thymesVar id="ingredient" type="guru.springframework.domain.Ingredient"*/-->
+    <tbody>
+    <TR th:each="recipe:${recipies}">
+        <td th:text="${recipe.getId()}"></td>
+        <td th:text="${recipe.getDescription()}"></td>
+        <td th:text="${recipe.getSource()}"></td>
+        <td> <div th:each="ingredient:${recipe.getIngredients()}">
+            <span th:text="${ingredient.getAmount()+ingredient.getUom().getDescription()+ ingredient.getDescription()}"></span>
+        </div></td>
+    </TR>
+    </tbody>
+</table>
 </body>
 </html>

@@ -1,0 +1,12 @@
+insert into UNIT_OF_MEASURE  (description) values ('Tesked');
+insert into UNIT_OF_MEASURE  (description) values ('Matsked');
+insert into UNIT_OF_MEASURE  (description) values ('Deciliter');
+insert into UNIT_OF_MEASURE  (description) values ('Liter');
+insert into UNIT_OF_MEASURE  (description) values ('Milliliter');
+insert into UNIT_OF_MEASURE  (description) values ('St');
+insert into UNIT_OF_MEASURE  (description) values ('Stänk');
+insert into UNIT_OF_MEASURE  (description) values ('Påse');
+insert into CATEGORY (description) values ('Amerikanskt');
+insert into CATEGORY (description) values ('Italienskt');
+insert into CATEGORY (description) values ('Mexikanskt');
+insert into CATEGORY (description) values ('Svenskt');
