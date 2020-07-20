@@ -7,10 +7,12 @@ import guru.springframework.domain.Recipe;
 import guru.springframework.repositories.CategoryRepository;
 import guru.springframework.repositories.RecipeRepository;
 import guru.springframework.repositories.UnitOfMeasureRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
+@Slf4j
 @Component
 public class BootstrapData implements CommandLineRunner {
     private final CategoryRepository categoryRepository;
@@ -25,6 +27,7 @@ public class BootstrapData implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        log.debug("Start run in runner");
         Recipe recipeGuacamole = new Recipe();
         recipeGuacamole.setCookTime(3);
         recipeGuacamole.setDifficulty(Difficulty.MODERATE);

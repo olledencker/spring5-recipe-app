@@ -1,9 +1,13 @@
 package guru.springframework.domain;
 
 
+import lombok.*;
+
 import javax.persistence.*;
 
+@Data
 @Entity
+@EqualsAndHashCode(exclude = {"recipe"})
 public class Notes{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,14 +21,6 @@ public class Notes{
 
     public void setId(Long id) {
         Id = id;
-    }
-
-    public Recipe getRecipe() {
-        return recipe;
-    }
-
-    public void setRecipe(Recipe recipe) {
-        this.recipe = recipe;
     }
 
     public String getRecipeNote() {
