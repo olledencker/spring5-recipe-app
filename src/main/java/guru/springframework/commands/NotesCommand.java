@@ -1,6 +1,5 @@
 package guru.springframework.commands;
 
-import guru.springframework.domain.Recipe;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,7 +8,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class NotesCommand {
-    private Long Id;
-    private Recipe recipe;
+    private Long id;
+
     private String RecipeNote;
 }
