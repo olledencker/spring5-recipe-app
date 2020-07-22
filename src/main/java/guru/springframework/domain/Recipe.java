@@ -12,10 +12,13 @@ import java.util.Set;
 
 @Data
 @Entity
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Recipe {
     @Id
     @GeneratedValue(strategy =GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
     private String description;
     private Integer prepTime;
     private Integer cookTime;
@@ -30,18 +33,14 @@ public class Recipe {
     @OneToOne(cascade = CascadeType.ALL)
     private Notes notes;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
+    @Builder.Default
     private Set<Ingredient> ingredients = new HashSet<>();
 
     @ManyToMany()
+    @Builder.Default
     @JoinTable(name="recipe_category", joinColumns = @JoinColumn(name = "recipe_id"), inverseJoinColumns = @JoinColumn(name="category_id"))
     private Set<Category> categories = new HashSet<>();
-    public Long getId() {
-        return Id;
-    }
 
-    public void setId(Long id) {
-        Id = id;
-    }
 
 
 }

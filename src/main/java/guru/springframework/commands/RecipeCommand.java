@@ -1,15 +1,15 @@
 package guru.springframework.commands;
 
 import guru.springframework.domain.Difficulty;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.HashSet;
 import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class RecipeCommand {
     private Long id;
     private String description;
@@ -22,6 +22,8 @@ public class RecipeCommand {
     private Difficulty difficulty;
 
     private NotesCommand notes;
+    @Builder.Default
     private Set<IngredientCommand> ingredients = new HashSet<>();
+    @Builder.Default
     private Set<CategoryCommand> categories = new HashSet<>();
 }
