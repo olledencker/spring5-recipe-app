@@ -26,6 +26,7 @@ public class Recipe {
     private String source;
     private String url;
     private String directions;
+
     @Enumerated(value = EnumType.STRING)
     private Difficulty difficulty;
     @Lob
@@ -41,6 +42,9 @@ public class Recipe {
     @JoinTable(name="recipe_category", joinColumns = @JoinColumn(name = "recipe_id"), inverseJoinColumns = @JoinColumn(name="category_id"))
     private Set<Category> categories = new HashSet<>();
 
+    public void addIngredient(Ingredient ingredient){
+        this.ingredients.add(ingredient);
+    }
 
 
 }
