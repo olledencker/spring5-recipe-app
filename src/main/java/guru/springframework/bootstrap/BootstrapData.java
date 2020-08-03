@@ -92,7 +92,7 @@ public class BootstrapData implements CommandLineRunner {
         spicyChicken.setDescription("Spicy Grilled Chicken Tacos");
         spicyChicken.setCookTime(15);
         spicyChicken.setDifficulty(Difficulty.EASY);
-        spicyChicken.setDescription("How to Make Perfect Guacamole Recipe");
+        spicyChicken.setDescription("Spicy Grilled Chicken Tacos");
         spicyChicken.setDirections("picy grilled chicken tacos! Quick marinade, then grill. Ready in about 30 minutes. Great for a quick weeknight dinner, backyard cookouts, and tailgate parties.");
         spicyChicken.setPrepTime(20);
         spicyChicken.setServing(6);

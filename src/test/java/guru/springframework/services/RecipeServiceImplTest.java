@@ -79,4 +79,14 @@ public class RecipeServiceImplTest {
         //when
         //then
     }
+    @Test
+    public void deleteById(){
+        //given
+        Long idToDelete = 2L;
+        //when
+        recipeService.deleteById(idToDelete);
+
+        //Then
+        verify(recipeRepository,times(1)).deleteById(anyLong());
+    }
 }

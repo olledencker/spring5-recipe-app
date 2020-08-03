@@ -49,4 +49,14 @@ public class RecipeServiceImpl implements RecipeService{
     public RecipeCommand saveRecipecommand(RecipeCommand recipeCommand) {
         return recipeToRecipeCommand.convert(recipeRepository.save(recipeCommandToRecipe.convert(recipeCommand)));
     }
+
+    @Override
+    public RecipeCommand findCommandById(Long aLong) {
+        return recipeToRecipeCommand.convert(findById(aLong));
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        recipeRepository.deleteById(id);
+    }
 }
