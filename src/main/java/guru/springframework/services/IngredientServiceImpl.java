@@ -30,8 +30,11 @@ public class IngredientServiceImpl implements IngredientService{
         log.debug("###############           Get ingredients¤¤¤¤¤¤¤¤¤¤¤");
         Optional<IngredientCommand> ingredientCommand = recipe.getIngredients().stream()
                 .filter(ingr->ingr.getId().equals(ingredientId))
-                .map(ingr-> ingredientToIngredientCommand.convert(ingr)).findFirst();
-
+                .map(i-> ingredientToIngredientCommand.convert(i)).findFirst();
+        if(!ingredientCommand.isPresent()){
+            log.error("no ingredient found");
+            return null;
+        }
         return ingredientCommand.get();
     }
 }
