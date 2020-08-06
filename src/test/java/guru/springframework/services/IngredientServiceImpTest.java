@@ -81,7 +81,26 @@ public class IngredientServiceImpTest {
 
     @Test
     public void saveIngredient(){
+        //given
+        Recipe savedrecipe = new Recipe();
+        savedrecipe.setId(1L);
+
+        Ingredient ingredient1 = new Ingredient();
+        ingredient1.setId(3L);
+
+        savedrecipe.addIngredient(ingredient1);
+
+        Optional<Recipe> recipeOptional = Optional.of(new Recipe());
+        IngredientCommand newIngredient = IngredientCommand.builder().id(3L).recipeId(1L).description("Test").build();
+        when(recipeRepository.findById(anyLong())).thenReturn(recipeOptional);
+        when(recipeRepository.save(any())).thenReturn(savedrecipe);
+        //when
+        IngredientCommand savedCommand = ingredientService.saveIngredient(newIngredient);
 
 
+        //then
+        assertEquals(savedCommand.getId(), new Long(3L));
+        verify(recipeRepository,times(1)).findById(anyLong());
+        verify(recipeRepository,times(1)).save(any());
     }
 }
