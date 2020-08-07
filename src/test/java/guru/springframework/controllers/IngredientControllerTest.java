@@ -4,6 +4,7 @@ import guru.springframework.services.IngredientService;
 import guru.springframework.services.RecipeService;
 import guru.springframework.services.UnitOfMeasureService;
 import org.junit.Before;
+import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.test.web.servlet.MockMvc;
@@ -26,6 +27,11 @@ public class IngredientControllerTest {
         MockitoAnnotations.initMocks(this);
         ingredientController = new IngredientController(recipeService,ingredientService,unitOfMeasureService);
         mockMvc= MockMvcBuilders.standaloneSetup(ingredientController).build();
+    }
+    @Test
+    public void deleteIngredient(){
+        //given
+
     }
 
 

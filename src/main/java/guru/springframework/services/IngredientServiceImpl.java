@@ -19,6 +19,7 @@ import java.util.Optional;
 @Slf4j
 public class IngredientServiceImpl implements IngredientService{
 
+
     private final RecipeRepository recipeRepository;
     private  final IngredientToIngredientCommand ingredientToIngredientCommand;
     private final IngredientCommandToIngredient ingredientCommandToIngredient;
@@ -45,7 +46,23 @@ public class IngredientServiceImpl implements IngredientService{
         }
         return ingredientCommand.get();
     }
+    @Override
+    public void deleteIngredient(Long recipeId, Long ingredientID) {
+        Optional<Recipe> recipeOpt = recipeRepository.findById(recipeId);
+        if(recipeOpt.isPresent()){
+            Recipe recipe = recipeOpt.get();
+            Optional<Ingredient> ingredientOptional =recipe.getIngredients().stream()
+                    .filter(i->i.getId().equals(ingredientID)).findFirst();
+            if(ingredientOptional.isPresent()){
+                Ingredient ingredientToDelete= ingredientOptional.get();
+                ingredientToDelete.setRecipe(null);
+                recipe.getIngredients().remove(ingredientToDelete);
 
+                Recipe savedRecepie = recipeRepository.save(recipe);
+          //      log.debug(savedRecepie.toString());
+            }
+        }
+    }
     @Override
     @Transactional
     public IngredientCommand saveIngredient(IngredientCommand ingredientCommand) {
@@ -75,4 +92,5 @@ public class IngredientServiceImpl implements IngredientService{
             return ingredientToIngredientCommand.convert(ingredientOptional.get() );
         }
     }
+
 }
