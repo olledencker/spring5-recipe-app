@@ -36,6 +36,7 @@ public class RecipeCommandToRecipe implements Converter<RecipeCommand, Recipe> {
                 .prepTime(recipeCommand.getPrepTime())
                 .serving(recipeCommand.getServing())
                 .source(recipeCommand.getSource())
+                .image(recipeCommand.getImage())
                 .url(recipeCommand.getUrl()).build();
 
         recipeCommand.getIngredients().forEach(i->{recipe.getIngredients().add(ingredientCommandToIngredient.convert(i));});

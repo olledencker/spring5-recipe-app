@@ -20,7 +20,7 @@ public class RecipeCommand {
     private String url;
     private String directions;
     private Difficulty difficulty;
-
+    private Byte[] image;
     private NotesCommand notes;
     @Builder.Default
     private Set<IngredientCommand> ingredients = new HashSet<>();
