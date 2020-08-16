@@ -67,7 +67,9 @@ public class recipeControllerTest {
     public void notFoudException() throws Exception {
         Optional<Recipe> empty = Optional.empty();
         when(recipeService.findById(anyLong())).thenThrow(NotFoundException.class);
-        mockMvc.perform(MockMvcRequestBuilders.get("/recipe/1/show")).andExpect(status().isNotFound());
+        mockMvc.perform(MockMvcRequestBuilders.get("/recipe/1/show"))
+                .andExpect(view().name("recipe/recipe404"))
+                .andExpect(status().isNotFound());
     }
     @Test
     public void testUpdateForm() throws Exception {
